@@ -225,7 +225,7 @@ export class ClockWeatherCard extends LitElement {
       <clock-weather-card-today-left>
         <img class="grow-img" src=${icon} />
       </clock-weather-card-today-left>
-      <clock-weather-card-today-right style="font-size: ${this.config.title_sub_font_size ? '1rem;' : this.config.title_sub_font_size}">
+      <clock-weather-card-today-right style="font-size: ${this.config.title_sub_font_size == null || this.config.title_sub_font_size == '' ? '1rem;' : this.config.title_sub_font_size}">
         <clock-weather-card-today-right-wrap>
           <clock-weather-card-today-right-wrap-top>
             ${this.config.hide_clock ? weatherString : localizedTemp ? `${weatherString}, ${localizedTemp}` : weatherString}
