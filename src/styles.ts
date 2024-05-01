@@ -31,7 +31,6 @@ export default css`
   }
 
   clock-weather-card-today-right-wrap {
-    font-size: ${this.config.title_sub_font_size ? '1rem' : this.config.title_sub_font_size};
     display: flex;
     flex-direction: column;
   }
