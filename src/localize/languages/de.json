@@ -5,9 +5,9 @@
     "fog": "Nebel",
     "hail": "Hagel",
     "lightning": "Gewitter",
-    "lightning-rainy": "Gewitter",
-    "partlycloudy": "Teils bewölkt",
-    "pouring": "starker Regen",
+    "lightning-rainy": "Gewitter m. Regen",
+    "partlycloudy": "Teilweise bewölkt",
+    "pouring": "Starkregen",
     "rainy": "Regen",
     "snowy": "Schneefall",
     "snowy-rainy": "Schneeregen",
@@ -27,6 +27,6 @@
   },
   "misc": {
     "humidity": "Luftfeuchtigkeit",
-    "feels-like": "Feels like"
+    "feels-like": "Gefühlt"
   }
 }
