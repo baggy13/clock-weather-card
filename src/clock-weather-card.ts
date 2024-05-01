@@ -431,7 +431,8 @@ export class ClockWeatherCard extends LitElement {
       use_browser_time: config.use_browser_time ?? false,
       time_zone: config.time_zone ?? undefined,
       show_decimal: config.show_decimal ?? false,
-      apparent_sensor: config.apparent_sensor ?? undefined
+      apparent_sensor: config.apparent_sensor ?? undefined,
+      title_sub_font_size: config.title_sub_font_size ?? '1.3rem'
     }
   }
 
