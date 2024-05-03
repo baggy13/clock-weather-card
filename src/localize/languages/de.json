@@ -9,11 +9,11 @@
     "partlycloudy": "Teilweise bewölkt",
     "pouring": "Starkregen",
     "rainy": "Regen",
-    "snowy": "Schneefall",
+    "snowy": "Schnee",
     "snowy-rainy": "Schneeregen",
-    "sunny": "Sonnig",
-    "windy": "Windig",
-    "windy-variant": "Stürmisch",
+    "sunny": "Sonne",
+    "windy": "Wind",
+    "windy-variant": "Sturm",
     "exceptional": "Unwetter"
   },
   "day": {
