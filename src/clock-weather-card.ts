@@ -172,10 +172,10 @@ export class ClockWeatherCard extends LitElement {
         <div class="card-content">
           ${showToday
         ? html`
+            <clock-weather-card-forecast style="height: 2rem;">
+              ${safeRender(() => this.renderWeatherString())}
+            </clock-weather-card-forecast>
             <clock-weather-card-today>
-              <clock-weather-card-forecast>
-                ${safeRender(() => this.renderWeatherString())}
-              </clock-weather-card-forecast>
               ${safeRender(() => this.renderToday())}
             </clock-weather-card-today>`
         : ''}
@@ -252,7 +252,7 @@ export class ClockWeatherCard extends LitElement {
     const localizedTemp = temp !== null ? this.toConfiguredTempWithUnit(tempUnit, temp) : null
 
     return html`
-      <div style="font-size: ${this.config.title_sub_font_size == null || this.config.title_sub_font_size === '' ? '1rem;' : this.config.title_sub_font_size}">
+      <div style="text-align: right; font-size: ${this.config.title_sub_font_size == null || this.config.title_sub_font_size === '' ? '1rem;' : this.config.title_sub_font_size}">
             ${this.config.hide_clock ? weatherString : localizedTemp ? `${weatherString}, ${localizedTemp}` : weatherString}
       </div>`
   }
