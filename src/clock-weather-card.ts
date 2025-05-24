@@ -173,6 +173,9 @@ export class ClockWeatherCard extends LitElement {
           ${showToday
         ? html`
             <clock-weather-card-today>
+              <clock-weather-card-forecast>
+                ${safeRender(() => this.renderWeatherString())}
+              </clock-weather-card-forecast>
               ${safeRender(() => this.renderToday())}
             </clock-weather-card-today>`
         : ''}
@@ -215,7 +218,6 @@ export class ClockWeatherCard extends LitElement {
     const humidity = roundIfNotNull(this.getCurrentHumidity())
     const iconType = this.config.weather_icon_type
     const icon = this.toIcon(state, iconType, false, this.getIconAnimationKind())
-    const weatherString = this.localize(`weather.${state}`)
     const localizedTemp = temp !== null ? this.toConfiguredTempWithUnit(tempUnit, temp) : null
     const localizedHumidity = humidity !== null ? `${humidity}% ${this.localize('misc.humidity')}` : null
     const localizedApparent = apparentTemp !== null ? this.toConfiguredTempWithUnit(tempUnit, apparentTemp) : null
@@ -228,7 +230,6 @@ export class ClockWeatherCard extends LitElement {
       <clock-weather-card-today-right style="font-size: ${this.config.title_sub_font_size == null || this.config.title_sub_font_size === '' ? '1rem;' : this.config.title_sub_font_size}">
         <clock-weather-card-today-right-wrap>
           <clock-weather-card-today-right-wrap-top>
-            ${this.config.hide_clock ? weatherString : localizedTemp ? `${weatherString}, ${localizedTemp}` : weatherString}
             ${this.config.show_humidity && localizedHumidity ? html`<br>${localizedHumidity}` : ''}
             ${this.config.apparent_sensor && apparentTemp ? html`<br>${apparentString}: ${localizedApparent}` : ''}
           </clock-weather-card-today-right-wrap-top>
@@ -240,6 +241,20 @@ export class ClockWeatherCard extends LitElement {
           </clock-weather-card-today-right-wrap-bottom>
         </clock-weather-card-today-right-wrap>
       </clock-weather-card-today-right>`
+  }
+
+  private renderWeatherString (): TemplateResult {
+    const weather = this.getWeather()
+    const state = weather.state
+    const temp = this.config.show_decimal ? this.getCurrentTemperature() : roundIfNotNull(this.getCurrentTemperature())
+    const tempUnit = weather.attributes.temperature_unit
+    const weatherString = this.localize(`weather.${state}`)
+    const localizedTemp = temp !== null ? this.toConfiguredTempWithUnit(tempUnit, temp) : null
+
+    return html`
+      <div style="font-size: ${this.config.title_sub_font_size == null || this.config.title_sub_font_size === '' ? '1rem;' : this.config.title_sub_font_size}">
+            ${this.config.hide_clock ? weatherString : localizedTemp ? `${weatherString}, ${localizedTemp}` : weatherString}
+      </div>`
   }
 
   private renderForecast (): TemplateResult[] {
